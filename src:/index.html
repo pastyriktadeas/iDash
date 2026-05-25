@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-actions">
+        <button id="bgBtn" class="action-btn" onclick="openBgModal()">Change Background</button>
+        <button id="editBtn" class="action-btn" onclick="toggleEdit()">Edit</button>
+    </div>
+
+    <div class="container">
+        <div class="header-controls">
+            <div class="search-icon"></div>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search..." onkeypress="handleSearch(event)" oninput="handleSearchInput(event)">
+        </div>
+        <div id="grid" class="grid"></div>
+    </div>
+
+    <div id="folderView" onclick="closeFolder()">
+        <div class="folder-content-box" onclick="event.stopPropagation()">
+            <h2 id="folderViewTitle" class="folder-title">Folder</h2>
+            <div id="folderGrid" class="grid"></div>
+        </div>
+    </div>
+
+    <div id="contextMenu" class="context-menu">
+        <div class="menu-item" id="ctxOpen">Open</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item" id="ctxEdit">Edit</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item ctx-delete" id="ctxDelete">Delete</div>
+    </div>
+
+    <div id="modal">
+        <div class="modal-box">
+            <h3 id="modalTitle">Add Item</h3>
+            <input type="hidden" id="inpId">
+            <input type="text" id="inpTitle" placeholder="Title">
+            
+            <div class="checkbox-wrapper" id="folderTypeWrapper">
+                <input type="checkbox" id="inpIsFolder" onchange="toggleFolderInputs()">
+                <label for="inpIsFolder">This is a folder</label>
+            </div>
+
+            <div id="linkInputs">
+                <input type="text" id="inpUrl" placeholder="URL (http://...)">
+                <input type="text" id="inpIcon" placeholder="Icon URL (or 'live-calendar')">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="inpShrink">
+                    <label for="inpShrink">Shrink icon (for borderless logos)</label>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-save" onclick="saveItem()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="bgModal">
+        <div class="modal-box">
+            <h3>Background Settings</h3>
+            <input type="text" id="inpBgUrl" placeholder="https://...">
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeBgModal()">Cancel</button>
+                <button class="btn-save" onclick="saveBackground()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "background": "https://wallpapercave.com/wp/wp12572002.jpg",
+  "services": [
+    {
+      "id": 1,
+      "title": "Calendar",
+      "url": "https://calendar.apple.com",
+      "icon": "live-calendar",
+      "shrink": false,
+      "type": "link"
+    },
+    {
+      "id": 2,
+      "title": "Synology",
+      "url": "http://synology.local:5000",
+      "icon": "https://cdn-icons-png.flaticon.com/512/5968/5968840.png",
+      "shrink": true,
+      "type": "link"
+    },
+    {
+      "id": 3,
+      "title": "Portainer",
+      "url": "http://docker.local:9000",
+      "icon": "https://cdn-icons-png.flaticon.com/512/919/919853.png",
+      "shrink": true,
+      "type": "link"
+    },
+    {
+      "id": 4,
+      "title": "Pi-hole",
+      "url": "http://pi.hole/admin",
+      "icon": "https://upload.wikimedia.org/wikipedia/en/1/15/Pi-hole_vector_logo.svg",
+      "shrink": true,
+      "type": "link"
+    },
+    {
+      "id": 5,
+      "title": "GitHub",
+      "url": "https://github.com",
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
+      "shrink": true,
+      "type": "link"
+    },
+    {
+      "id": 6,
+      "title": "Media",
+      "type": "folder",
+      "items": [
+        {
+          "id": 601,
+          "title": "YouTube",
+          "url": "https://youtube.com",
+          "icon": "https://cdn-icons-png.flaticon.com/512/1384/1384060.png",
+          "shrink": false,
+          "type": "link"
+        },
+        {
+          "id": 602,
+          "title": "Plex",
+          "url": "http://plex.local:32400/web",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Plex_logo_2022.svg",
+          "shrink": true,
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}

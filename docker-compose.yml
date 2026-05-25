@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  idash:
+    build: .
+    container_name: idash
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+    restart: unless-stopped
