@@ -2,7 +2,7 @@
 
 A minimalist, highly responsive, and beautiful startpage/dashboard for your homelab and daily web navigation. Inspired by macOS and iOS design principles, featuring glassmorphism, smooth animations, and a pure zero-database setup.
 
-![iDash Preview](link-to-your-screenshot.png) 
+![iDash Preview](./images/page.png) 
 
 ## ✨ Features
 * **Zero Database:** Everything is saved locally in a single `data.json` file.
