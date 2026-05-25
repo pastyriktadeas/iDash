@@ -1,6 +1,6 @@
 # iDash 
 
-A minimalist, highly responsive, and beautiful startpage/dashboard for your homelab and daily web navigation. Inspired by macOS and iOS design principles, featuring glassmorphism, smooth animations, and a pure zero-database setup.
+A minimalist, highly responsive startpage/dashboard for your homelab and daily web navigation. Inspired by macOS and iOS design principles, featuring glassmorphism, smooth animations, and a pure zero-database setup.
 
 ![iDash Preview](./images/page.png) 
 
