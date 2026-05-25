@@ -18,7 +18,7 @@ The easiest way to get iDash running is via Docker.
 
 **1. Clone this repository:**
 ```bash
-git clone [https://github.com/pastyriktadeas/iDash.git](https://github.com/pastyriktadeas/iDash.git)
+git clone https://github.com/pastyriktadeas/iDash.git
 cd iDash
 ```
 
