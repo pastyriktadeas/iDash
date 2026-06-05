@@ -13,27 +13,29 @@ A minimalist, highly responsive startpage/dashboard for your homelab and daily w
 * **Spotlight Search:** Type to instantly filter your apps, or hit Enter to search the web. **Pro tip: Press <kbd>/</kbd> from anywhere to instantly focus the search bar!**
 * **Custom Backgrounds:** Change your wallpaper on the fly via URL.
 
-##  Quick Start (Docker)
-The easiest way to get iDash running is via Docker.
+## Quick Start (Docker)
+The easiest and recommended way to get iDash running is via Docker. You don't even need to clone the repository!
 
-**1. Clone this repository:**
-```bash
-git clone https://github.com/pastyriktadeas/iDash.git
-cd iDash
-```
+Simply paste this entire block into your terminal. It will automatically create a folder, generate the necessary configuration, set up your data file, and start the dashboard:
 
-**2. Create your data file from the example:**
 ```bash
-cp src/data.example.json src/data.json
-```
+mkdir -p idash && cd idash
 
-**3. Ensure permissions (important for saving data from the browser):**
-```bash
-chmod 777 src/data.json
-```
+cat << 'EOF' > docker-compose.yml
+services:
+  idash:
+    image: ghcr.io/pastyriktadeas/idash:latest
+    container_name: idash
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data.json:/var/www/html/src/data.json
+    restart: unless-stopped
+EOF
 
-**4. Start the container:**
-```bash
+echo "{}" > data.json
+chmod 777 data.json
+
 docker compose up -d
 ```
 
