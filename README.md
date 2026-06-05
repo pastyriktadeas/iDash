@@ -36,7 +36,7 @@ EOF
 echo "{}" > data.json
 chmod 777 data.json
 
-docker compose up -d
+docker-compose up -d
 ```
 
 Your dashboard is now beautifully shining at `http://localhost:8000` 
