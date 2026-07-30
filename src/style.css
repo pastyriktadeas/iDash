@@ -7,7 +7,7 @@
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-    background-image: url('https://wallpapercave.com/wp/wp12572002.jpg');
+    background-image: url('https://hips.hearstapps.com/hmg-prod/images/alpe-di-siusi-sunrise-with-sassolungo-or-langkofel-royalty-free-image-1623254127.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -83,16 +83,31 @@ body::before {
 }
 
 /* --- ČISTÝ HOVER EFEKT --- */
-.app-item img, .app-item .folder-icon, .app-item .live-calendar-icon {
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s;
-    will-change: transform;
+/* --- 3D APPLE TV EFEKT --- */
+.app-item {
+    /* Obalu přidáme 3D perspektivu */
+    perspective: 1000px; 
+    /* ... tvé stávající vlastnosti .app-item zůstávají ... */
+    display: flex; flex-direction: column; align-items: center; text-decoration: none;
+    width: var(--cell-width); position: relative; background: transparent !important;
+    cursor: pointer; padding-bottom: 10px; -webkit-user-drag: none;
 }
 
-.app-item:hover img, .app-item:hover .folder-icon, .app-item:hover .live-calendar-icon {
-    transform: scale(1.15); filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)) brightness(1.1);
+.app-item img, .app-item .folder-icon, .app-item .live-calendar-icon, .app-item .icon-placeholder {
+    /* Transform-style zajistí, že se prvek nezploští */
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s;
+    will-change: transform, filter;
 }
-.app-item:active img, .app-item:active .folder-icon, .app-item:active .live-calendar-icon { 
-    transform: scale(0.95); filter: brightness(0.9); 
+
+/* 
+POZOR: Záměrně jsme smazali .app-item:hover! 
+O naklánění a zvětšování se teď stará JavaScript.
+*/
+
+/* Kliknutí (active) si necháme z CSS, to funguje skvěle */
+.app-item:active img, .app-item:active .folder-icon, .app-item:active .live-calendar-icon, .app-item:active .icon-placeholder { 
+    transform: scale(0.95) !important; filter: brightness(0.9) !important; 
 }
 
 /* --- IKONY --- */

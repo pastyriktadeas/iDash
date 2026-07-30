@@ -92,7 +92,7 @@ async function loadData() {
     } catch (e) { 
         alert("Error: Failed to load data from server! Please check permissions."); return; 
     }
-    if(!appData.background) appData.background = 'https://wallpapercave.com/wp/wp12572002.jpg';
+    if(!appData.background) appData.background = 'https://hips.hearstapps.com/hmg-prod/images/alpe-di-siusi-sunrise-with-sassolungo-or-langkofel-royalty-free-image-1623254127.jpg';
     applyBackground(appData.background); render();
 }
 
@@ -127,6 +127,49 @@ function createItemHTML(item) {
     return html;
 }
 
+function applyAppleTvEffect(el) {
+    const icon = el.querySelector('img, .folder-icon, .live-calendar-icon, .icon-placeholder');
+    if (!icon) return;
+
+    el.addEventListener('mousemove', (e) => {
+        if (isEditing) return; // Při úpravách a přesouvání nechceme 3D rotaci
+        
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Pozice kurzoru X uvnitř ikony
+        const y = e.clientY - rect.top;  // Pozice kurzoru Y uvnitř ikony
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Výpočet rotace (čím víc ke kraji, tím větší náklon - max 20 stupňů)
+        const rotateX = ((y - centerY) / centerY) * -20; 
+        const rotateY = ((x - centerX) / centerX) * 20;  
+        
+        // Dynamický stín, který uhýbá před světlem
+        const shadowX = rotateY * -0.6;
+        const shadowY = rotateX * 0.6 + 15;
+        
+        // Odstraníme plynulý přechod, aby ikona okamžitě následovala myš
+        icon.style.transition = 'none'; 
+        icon.style.transform = `scale(1.15) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        
+        // Aplikujeme stín a lehké zesvětlení (simulace dopadajícího světla)
+        icon.style.filter = `drop-shadow(${shadowX}px ${shadowY}px 20px rgba(0,0,0,0.4)) brightness(1.1)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+        // Po odjetí myši se ikona elegantně zhoupne zpět do roviny
+        icon.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease';
+        icon.style.transform = `scale(1) rotateX(0deg) rotateY(0deg)`;
+        icon.style.filter = '';
+    });
+    
+    el.addEventListener('mouseenter', () => {
+        // Rychlý nájezd do zvětšení při prvním dotyku
+        icon.style.transition = 'transform 0.1s ease-out, filter 0.1s ease-out';
+    });
+}
+
 function render() {
     const grid = document.getElementById('grid');
     const folderGrid = document.getElementById('folderGrid');
@@ -139,6 +182,7 @@ function render() {
         el.oncontextmenu = (e) => showContextMenu(e, item);
         el.innerHTML = createItemHTML(item);
         grid.appendChild(el);
+        applyAppleTvEffect(el);
     });
     appendAddButton(grid);
 
@@ -154,6 +198,7 @@ function render() {
                 el.oncontextmenu = (e) => showContextMenu(e, item);
                 el.innerHTML = createItemHTML(item);
                 folderGrid.appendChild(el);
+                applyAppleTvEffect(el);
             });
             appendAddButton(folderGrid);
         }
@@ -169,6 +214,7 @@ function appendAddButton(container) {
         addBtn.onclick = () => openModal();
         addBtn.innerHTML = `<div class="icon-placeholder">+</div><span>Add</span>`;
         container.appendChild(addBtn);
+        applyAppleTvEffect(addBtn);
     }
 }
 
