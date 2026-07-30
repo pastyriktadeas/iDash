@@ -42,10 +42,12 @@ docker-compose up -d
 Your dashboard is now beautifully shining at `http://localhost:8000` 
 
 ##  Usage & Customization
-* **Edit Mode:** Click the `Edit` button in the top right corner to enter jiggle mode. 
-* **Add Apps:** Click the translucent `+ Add` button. You can add regular links or create folders.
-* **Context Menu:** Right-click any icon on the dashboard to open the custom macOS-style context menu for quick editing or deletion.
-* **Special Icons:** When adding a new app, type `live-calendar` in the Icon URL field to get the dynamic daily calendar icon.
+* **Apple TV 3D Parallax:** Native-feeling, spatial cursor tracking with dynamic shadows and tilts.
+* **Zero Database:** Everything lives in a single, easily portable `data.json` file.
+* **Docker Ready:** Deploy in seconds via `docker compose` with automated GitHub Packages updates.
+* **macOS Glassmorphism:** Sleek, blurred backgrounds with dynamic wallpapers.
+* **Live Calendar Icons:** Real-time date display for calendar apps.
+* **Drag & Drop:** Fully sortable grid with folder support.
 
 ##  License
 This project is licensed under the [MIT License](LICENSE).
